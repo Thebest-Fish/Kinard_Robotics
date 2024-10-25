@@ -62,12 +62,7 @@ h2 {
   -webkit-text-stroke: black 2px;
 } 
       #timer.dark-mode {
-       text-align: center;
-    background: black;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    color: white;
+       
 }
 
 button {
@@ -108,10 +103,11 @@ const x = setInterval(function() {
         document.getElementById("countdown").innerHTML = "EXPIRED";
     }
 }, 1000);
-const button = document.getElementById('toggle-button');
-
+      
+const timerDiv = document.getElementById('#timer');
+      
 button.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
+    document.#timer.classList.toggle('dark-mode');
 });
 
     </script>
