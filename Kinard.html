@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Kinard Robotics</title>
     <link rel="shortcut icon" sizes="16x16" href="data:image/webp;base64,UklGRjIDAABXRUJQVlA4ICYDAABwEgCdASogACAAPjEKjEYiEREMACADBLYATplCOBvGOHc2bMIOl/7ptDG4A/W7/VcAB+nPWAegB+1XpU/tB8Hn7T/sB8AH7B4AI0EzIesfjllAfxHyzaSP8bMsC9lNIA/qX4za8D/VemDnZ+e/9h+R30E/yb+h/5r+sfuvxnK3HII//XH2k1wEPVbqVWf5tYmvw4ECfJnt2tHNrgAA/v1kseCH+qlPqT1BipCOpVUR/gv+pkgnk36OvB18SUttMg76HFS5Okq3/V4/9aUv/lxZAz3YaXhFQUDv4rADY9WQ7Pv1/zQVfRs+f8uJCtBshGi55YkN4KVQzL717hV/xY1TnwlZvxn7YD8vNP+9QJjEYukf/m7s8xzwphLEx2R/UfCXqzv184reUMf/4E7k29IJa3/7rpoSc/xMT/LhtfS3x6S/8CdzPodI1672SUrN7f88eKzS8jU30/Z14Dan4oOYTYpi1/Ld/i6AnalJAz/z+hV341C3l8TxDlta8ia7s2RFextihwP4kgfrKKs/zf/8Lu46rI2TeA5+Sgd3JXg/5gMdyxojwy/0TBQkCn6n+//9euQPmzRHf2AP/Neev00QWFoT77xaGKPgOfl040Nk7bR8i7AR8B/pJdCSLS2sCIBVEW/s/n/8z/b/689kogMfXB0FHKQIgS/UHbbfNUNElE4b6SCYwJspQWCOI8KrZFJMpey0dgnn/7l0IDhsGIf+vmBCPXEMHeGxleeDXKErJx81/qtzksfn7D0+K5Kh1ID37o5KEFnB80zWz345OLmpDsHb7MYP/P9Z411efAy+iPVDnkyohD3zMz9Ni5fwaXNoLTujDrx1bUFb/yKyC/yVz/1Ya4BfrPfNPf/AP/8icAfBS1c4pPXP8pDf5WsBXIVou6RpK/8lR3eWMyH/1p/gK0lEEG5LbijUUc00O2ka81+wwL6t8QJCHa+6+U5Vg+ZaoRvkwBNqHEo45mR9y5cSmIj7HGmzm5k/jlKX7o/IwSHC5p73a6uQgMX6i401OrK74F2YyGI5Q5mqONJe+NLb4cfmYr6g5jVjGZCx1aGt+NceatwAAA==">
-</head>    
     <style>
         body {
             display: flex;
@@ -13,11 +12,10 @@
             height: 100vh;
             font-family: Verdana;
             color: black;
-           
             margin: 20px; /* Margin around the body */
-           background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtktl_LqMYRUGGMvNIP7IlEu-uoKuDi061SA&s');
- 
+            background-color: white;
             transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+            position: relative; /* To position the button correctly */
         }
 
         #timer {
@@ -25,40 +23,68 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-          background-image: url('https://i.etsystatic.com/18617558/r/il/b1b7b3/4043862931/il_570xN.4043862931_cxlv.jpg');
+            background-color: lightblue; /* Light mode background */
         }
-      #countdown span {
-    font-size: 2em;
-    margin: 0 10px;
-}
-      a {
-        color: white;
-      }
+
+        #countdown span {
+            font-size: 2em;
+            margin: 0 10px;
+        }
+
+        a {
+            color: white;
+        }
+
         body.dark-mode {
             background-color: black; /* Dark mode background */
             color: white; /* Dark mode text color */
         }
+
         body.dark-mode #timer {
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwqtJQH6XrRZhFfvoMR3f6w2L6z7kNOhurQ&s'); /* Timer background in dark mode */
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwqtJQH6XrRZhFfvoMR3f6w2L6z7kNOhurQ&s'); /* Image background in dark mode */
+            background-color: transparent; /* Remove solid color in dark mode */
         }
 
         button {
             padding: 10px 15px;
-            margin-top: 20px;
             cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            position: absolute; /* Position the button absolutely */
+           margin: 250px 250px; /* top right bottom left */
         }
-      .hover-text {
+
+        /* Light mode button styles */
+        body button {
+            background-color: lightblue;
+            color: black;
+        }
+
+        /* Dark mode button styles */
+        body.dark-mode button {
+            background-color: #333; /* Dark gray */
+            color: white;
+        }
+
+        /* Optional: Add hover effect for both modes */
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .hover-text {
             transition: transform 0.3s ease-in-out;
             display: inline-block;
-          }
-          .hover-text:hover {
+        }
+
+        .hover-text:hover {
             transform: translateY(-10px);
-          }
+        }
     </style>
 </head>
-<body>
+<body class="dark-mode"> <!-- Added dark-mode class here -->
     <div id="timer">
-       <h1>.</h1>
+        <h1>.</h1>
         <h1>.</h1>
         <h1>Kinard Robotics</h1>
         <h2>Countdown Until Qualifier</h2>
@@ -68,34 +94,33 @@
             <span id="minutes">00</span> Minutes
             <span id="seconds">00</span> Seconds
         </div>
+      <button id="toggle-button">Switch to Light Mode</button>
         <p>Created by: Ashvath D. Gupta from Kinard</p>
-        <button id="toggle-button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwqtJQH6XrRZhFfvoMR3f6w2L6z7kNOhurQ&s"></button>
-      <div><span class="hover-text">
-Welcome to Kinard Robotics! We are a passionate team dedicated to exploring the exciting world of LEGO robotics.
-        <div>Our mission is to inspire creativity, foster teamwork, and develop critical problem-solving skills through hands-on engineering and programming.</div><div>Whether we’re designing innovative robots for competitions or collaborating on fun projects, we aim to push the boundaries of what’s possible.</div> Join us on this thrilling journey as we build, learn, and have fun together!
-      <div>links for important websites ↓</div>
-        </span> </div>
-    <ul>
-      <span class="hover-text">
-      <li><span class="hover-text"><a href="https://spike.legoeducation.com/prime/lobby/" target="blanck">Programming and building</a></span></li>
-      <li><span class="hover-text"><a href="https://www.firstinspires.org/" target="blanck">First Inspires for registration</a></span></li>
-      <li><span class="hover-text"><a href="https://classroom.google.com/c/NzExODk0ODU3NDYy" target="blanck">Google Classroom</a></span></li>
-      <li><span class="hover-text"><a href="https://firstinspires.blob.core.windows.net/fll/challenge/2024-25/fll-challenge-submerged-multimedia-resources.pdf" target="blanck">PDF resorces</a></span></li>
-      </span>
-    </ul>
-    <p>Important dates!↓</p>
-    <ol>
-      <li>November 9th, 2024! Pouder Qualifier</li>
-      <li>More on the WAY!</li>
-    </ol>
-      <span class="hover-text">
-    <img src="https://kinardenvl.weebly.com/uploads/3/1/4/7/31476893/published/kinard-logo.jpg?1612638260" height = 200px>
-    <img src="https://yt3.googleusercontent.com/6RdseCI4mwWNpYRr2DDQkULL0R0D9Fe8M7rMvJMCj2vewJdi-eh1Ep3LMiN_tB4QJb3cBXExew=s900-c-k-c0x00ffffff-no-rj" height = 200px>
-      </span>
+        <div><span class="hover-text">
+            Welcome to Kinard Robotics! We are a passionate team dedicated to exploring the exciting world of LEGO robotics.
+            <div>Our mission is to inspire creativity, foster teamwork, and develop critical problem-solving skills through hands-on engineering and programming.</div>
+            <div>Whether we’re designing innovative robots for competitions or collaborating on fun projects, we aim to push the boundaries of what’s possible.</div>
+            Join us on this thrilling journey as we build, learn, and have fun together!
+            <div>links for important websites ↓</div>
+        </span></div>
+        <ul>
+            <span class="hover-text">
+                <li><span class="hover-text"><a href="https://spike.legoeducation.com/prime/lobby/" target="blanck">Programming and building</a></span></li>
+                <li><span class="hover-text"><a href="https://www.firstinspires.org/" target="blanck">First Inspires for registration</a></span></li>
+                <li><span class="hover-text"><a href="https://classroom.google.com/c/NzExODk0ODU3NDYy" target="blanck">Google Classroom</a></span></li>
+                <li><span class="hover-text"><a href="https://firstinspires.blob.core.windows.net/fll/challenge/2024-25/fll-challenge-submerged-multimedia-resources.pdf" target="blanck">PDF resources</a></span></li>
+            </span>
+        </ul>
+        <p>Important dates!↓</p>
+        <ol>
+            <li>November 9th, 2024! Pouder Qualifier</li>
+            <li>More on the WAY!</li>
+        </ol>
+        <span class="hover-text">
+            <img src="https://kinardenvl.weebly.com/uploads/3/1/4/7/31476893/published/kinard-logo.jpg?1612638260" height="200px">
+            <img src="https://yt3.googleusercontent.com/6RdseCI4mwWNpYRr2DDQkULL0R0D9Fe8M7rMvJMCj2vewJdi-eh1Ep3LMiN_tB4QJb3cBXExew=s900-c-k-c0x00ffffff-no-rj" height="200px">
+        </span>
     </div>
-
-    </div>
-
     <script>
         // Set the date for the countdown
         const countdownDate = new Date("November 9, 2024 23:59:59").getTime();
@@ -110,11 +135,12 @@ Welcome to Kinard Robotics! We are a passionate team dedicated to exploring the 
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerText = String(days).padStart(2, '0');
-            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
 
+            // If the countdown is finished, display some text
             if (distance < 0) {
                 clearInterval(x);
                 document.getElementById("countdown").innerHTML = "EXPIRED";
@@ -124,6 +150,11 @@ Welcome to Kinard Robotics! We are a passionate team dedicated to exploring the 
         const button = document.getElementById('toggle-button');
         button.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                button.textContent = 'Switch to Light Mode';
+            } else {
+                button.textContent = 'Switch to Dark Mode';
+            }
         });
     </script>
 </body>
