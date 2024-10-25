@@ -31,13 +31,15 @@
     font-size: 2em;
     margin: 0 10px;
 }
-
+      a {
+        color: white;
+      }
         body.dark-mode {
             background-color: black; /* Dark mode background */
             color: white; /* Dark mode text color */
         }
         body.dark-mode #timer {
-            background: #333; /* Timer background in dark mode */
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwqtJQH6XrRZhFfvoMR3f6w2L6z7kNOhurQ&s'); /* Timer background in dark mode */
         }
 
         button {
@@ -45,6 +47,13 @@
             margin-top: 20px;
             cursor: pointer;
         }
+      .hover-text {
+            transition: transform 0.3s ease-in-out;
+            display: inline-block;
+          }
+          .hover-text:hover {
+            transform: translateY(-10px);
+          }
     </style>
 </head>
 <body>
