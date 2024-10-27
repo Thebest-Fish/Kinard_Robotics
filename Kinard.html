@@ -6,80 +6,96 @@
     <link rel="shortcut icon" sizes="16x16" href="data:image/webp;base64,UklGRjIDAABXRUJQVlA4ICYDAABwEgCdASogACAAPjEKjEYiEREMACADBLYATplCOBvGOHc2bMIOl/7ptDG4A/W7/VcAB+nPWAegB+1XpU/tB8Hn7T/sB8AH7B4AI0EzIesfjllAfxHyzaSP8bMsC9lNIA/qX4za8D/VemDnZ+e/9h+R30E/yb+h/5r+sfuvxnK3HII//XH2k1wEPVbqVWf5tYmvw4ECfJnt2tHNrgAA/v1kseCH+qlPqT1BipCOpVUR/gv+pkgnk36OvB18SUttMg76HFS5Okq3/V4/9aUv/lxZAz3YaXhFQUDv4rADY9WQ7Pv1/zQVfRs+f8uJCtBshGi55YkN4KVQzL717hV/xY1TnwlZvxn7YD8vNP+9QJjEYukf/m7s8xzwphLEx2R/UfCXqzv184reUMf/4E7k29IJa3/7rpoSc/xMT/LhtfS3x6S/8CdzPodI1672SUrN7f88eKzS8jU30/Z14Dan4oOYTYpi1/Ld/i6AnalJAz/z+hV341C3l8TxDlta8ia7s2RFextihwP4kgfrKKs/zf/8Lu46rI2TeA5+Sgd3JXg/5gMdyxojwy/0TBQkCn6n+//9euQPmzRHf2AP/Neev00QWFoT77xaGKPgOfl040Nk7bR8i7AR8B/pJdCSLS2sCIBVEW/s/n/8z/b/689kogMfXB0FHKQIgS/UHbbfNUNElE4b6SCYwJspQWCOI8KrZFJMpey0dgnn/7l0IDhsGIf+vmBCPXEMHeGxleeDXKErJx81/qtzksfn7D0+K5Kh1ID37o5KEFnB80zWz345OLmpDsHb7MYP/P9Z411efAy+iPVDnkyohD3zMz9Ni5fwaXNoLTujDrx1bUFb/yKyC/yVz/1Ya4BfrPfNPf/AP/8icAfBS1c4pPXP8pDf5WsBXIVou6RpK/8lR3eWMyH/1p/gK0lEEG5LbijUUc00O2ka81+wwL6t8QJCHa+6+U5Vg+ZaoRvkwBNqHEo45mR9y5cSmIj7HGmzm5k/jlKX7o/IwSHC5p73a6uQgMX6i401OrK74F2YyGI5Q5mqONJe+NLb4cfmYr6g5jVjGZCx1aGt+NceatwAAA==">
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Verdana;
-            color: black;
-            margin: 20px; /* Margin around the body */
-            background-color: white;
-            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
-            position: relative; /* To position the button correctly */
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Verdana;
+    color: black;
+    margin: 20px; /* Margin around the body */
+    background-color: white;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    position: relative; /* To position the button correctly */
+}
 
-        #timer {
-            text-align: center;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            background-color: lightblue; /* Light mode background */
-        }
+#timer {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: lightblue; /* Light mode background */
+}
 
-        #countdown span {
-            font-size: 2em;
-            margin: 0 10px;
-        }
+#countdown span {
+    font-size: 2em;
+    margin: 0 10px;
+}
 
-        a {
-            color: white;
-        }
+a {
+    color: white;
+}
 
-        body.dark-mode {
-            background-color: black; /* Dark mode background */
-            color: white; /* Dark mode text color */
-        }
+body.dark-mode {
+    background-color: black; /* Dark mode background */
+    color: white; /* Dark mode text color */
+}
 
-        body.dark-mode #timer {
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwqtJQH6XrRZhFfvoMR3f6w2L6z7kNOhurQ&s'); /* Image background in dark mode */
-            background-color: transparent; /* Remove solid color in dark mode */
-        }
+body.dark-mode #timer {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwqtJQH6XrRZhFfvoMR3f6w2L6z7kNOhurQ&s'); /* Image background in dark mode */
+    background-color: transparent; /* Remove solid color in dark mode */
+}
 
-        button {
-            padding: 10px 15px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-            position: absolute; /* Position the button absolutely */
-           margin: 250px 250px; /* top right bottom left */
-        }
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: opacity 0.3s ease;
+    position: absolute; /* Position the button absolutely */
+    margin: 250px 250px; /* top right bottom left */
+    animation: rainbow 2s linear infinite; /* Add animation */
+}
 
-        /* Light mode button styles */
-        body button {
-            background-color: lightblue;
-            color: black;
-        }
+/* Rainbow animation for light mode */
+@keyframes rainbow {
+  0% { background-color: red; }
+    25% { background-color: orange; }
+    50% { background-color: yellow; }
+    75% { background-color: green; }
+    100% { background-color: blue; }
+}
 
-        /* Dark mode button styles */
-        body.dark-mode button {
-            background-color: #333; /* Dark gray */
-            color: white;
-        }
+/* Dark mode button styles */
+body.dark-mode button {
+    background-color: #333; /* Dark gray */
+    color: white;
+    animation: rainbow-dark 2s linear infinite; /* Dark mode rainbow */
+}
 
-        /* Optional: Add hover effect for both modes */
-        button:hover {
-            opacity: 0.8;
-        }
+/* Rainbow animation for dark mode */
+@keyframes rainbow-dark {
+  0% { background-color: lightblue; }
+    25% { background-color: pink; }
+    50% { background-color: lightgreen; }
+    75% { background-color: lightcoral; }
+    100% { background-color: lightblue; }
 
-        .hover-text {
-            transition: transform 0.3s ease-in-out;
-            display: inline-block;
-        }
+/* Optional: Add hover effect */
+button:hover {
+    opacity: 0.8; /* Optional: reduce opacity on hover */
+    transform: scale(1.1); /* Optional: enlarge on hover */
+  transition: transform 0.3s ease-in-out;
+}
 
-        .hover-text:hover {
-            transform: translateY(-10px);
-        }
+.hover-text {
+    transition: transform 0.3s ease-in-out;
+    display: inline-block;
+}
+
+.hover-text:hover {
+    transform: translateY(-10px);
+}
+
     </style>
 </head>
 <body class="dark-mode"> <!-- Added dark-mode class here -->
@@ -92,7 +108,7 @@
             <span id="minutes">00</span> Minutes
             <span id="seconds">00</span> Seconds
         </div>
-      <button id="toggle-button">Switch to Light Mode</button>
+        <button id="toggle-button">Switch to Light Mode</button>
         <p>Created by: Ashvath D. Gupta from Kinard</p>
         <div><span class="hover-text">
             Welcome to Kinard Robotics! We are a passionate team dedicated to exploring the exciting world of LEGO robotics.
