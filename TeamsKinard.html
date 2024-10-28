@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kinard Robotics</title>
+    <link rel="shortcut icon" sizes="16x16" href="data:image/webp;base64,UklGRjIDAABXRUJQVlA4ICYDAABwEgCdASogACAAPjEKjEYiEREMACADBLYATplCOBvGOHc2bMIOl/7ptDG4A/W7/VcAB+nPWAegB+1XpU/tB8Hn7T/sB8AH7B4AI0EzIesfjllAfxHyzaSP8bMsC9lNIA/qX4za8D/VemDnZ+e/9h+R30E/yb+h/5r+sfuvxnK3HII//XH2k1wEPVbqVWf5tYmvw4ECfJnt2tHNrgAA/v1kseCH+qlPqT1BipCOpVUR/gv+pkgnk36OvB18SUttMg76HFS5Okq3/V4/9aUv/lxZAz3YaXhFQUDv4rADY9WQ7Pv1/zQVfRs+f8uJCtBshGi55YkN4KVQzL717hV/xY1TnwlZvxn7YD8vNP+9QJjEYukf/m7s8xzwphLEx2R/UfCXqzv184reUMf/4E7k29IJa3/7rpoSc/xMT/LhtfS3x6S/8CdzPodI1672SUrN7f88eKzS8jU30/Z14Dan4oOYTYpi1/Ld/i6AnalJAz/z+hV341C3l8TxDlta8ia7s2RFextihwP4kgfrKKs/zf/8Lu46rI2TeA5+Sgd3JXg/5gMdyxojwy/0TBQkCn6n+//9euQPmzRHf2AP/Neev00QWFoT77xaGKPgOfl040Nk7bR8i7AR8B/pJdCSLS2sCIBVEW/s/n/8z/b/689kogMfXB0FHKQIgS/UHbbfNUNElE4b6SCYwJspQWCOI8KrZFJMpey0dgnn/7l0IDhsGIf+vmBCPXEMHeGxleeDXKErJx81/qtzksfn7D0+K5Kh1ID37o5KEFnB80zWz345OLmpDsHb7MYP/P9Z411efAy+iPVDnkyohD3zMz9Ni5fwaXNoLTujDrx1bUFb/yKyC/yVz/1Ya4BfrPfNPf/AP/8icAfBS1c4pPXP8pDf5WsBXIVou6RpK/8lR3eWMyH/1p/gK0lEEG5LbijUUc00O2ka81+wwL6t8QJCHa+6+U5Vg+ZaoRvkwBNqHEo45mR9y5cSmIj7HGmzm5k/jlKX7o/IwSHC5p73a6uQgMX6i401OrK74F2YyGI5Q5mqONJe+NLb4cfmYr6g5jVjGZCx1aGt+NceatwAAA==">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Verdana;
+            color: black;
+            margin: 20px;
+            background-color: white;
+            transition: background-color 0.3s, color 0.3s;
+            position: relative;
+        }
+
+        #timer {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: lightblue;
+        }
+
+        body.dark-mode {
+            background-color: black;
+            color: white;
+        }
+
+        body.dark-mode #timer {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwqtJQH6XrRZhFfvoMR3f6w2L6z7kNOhurQ&s');
+            background-color: transparent;
+        }
+
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: opacity 0.3s ease;
+            margin: 5px; /* Space between buttons */
+            background: lightgray; /* Background for the button */
+          color: white;
+        }
+
+        button:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .tabs {
+            margin: 20px 0;
+        }
+
+        .tab-button {
+            padding: 10px 15px; /* Size of tab buttons */
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin: 5px 0; /* Space between buttons */
+            animation: rainbow 2s linear infinite; /* Rainbow animation */
+            color: white;
+        }
+
+        @keyframes rainbow {
+            0% { background-color: red; }
+            20% { background-color: orange; }
+            40% { background-color: yellow; }
+            60% { background-color: green; }
+            80% { background-color: blue; }
+            100% { background-color: purple; }
+        }
+
+        .tab-content {
+            display: none;
+            margin-top: 20px; /* Increased space above content */
+            padding: 15px; /* Added padding for content */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Rainbow button for light/dark mode toggle */
+        #toggle-button {
+            animation: rainbow 2s linear infinite; /* Rainbow animation for toggle button */
+        }
+    </style>
+</head>
+<body class="dark-mode"> 
+    <div id="timer">
+        <h1>Team 2 & 3 from Kinard</h1>
+        <h2>Team 2 is MEJASI</h2>
+        <h2>Team 3 is ...</h2>
+        <p>Welcome to team 2 & 3's webpage. This is where we display what we are doing for the season and a little bit of code!</p>
+        <p>Team 2 & 3 uses this web interface to show other people what our team does for the innovation project.</p>
+        <p>Things to remember:</p>
+        <ol>
+            <li>This interface is only used for learning purposes. The code shown should not be used on the table due to the fact that it is not specific.</li>
+            <li>The innovation project is for our teams <strong>ONLY</strong>. You can only take ideas, not use them.</li>
+        </ol>
+        <div class="tabs">
+            <button class="tab-button active" data-content="content1">Python</button>
+            <button class="tab-button" data-content="content2">Icon Blocks</button>
+            <button class="tab-button" data-content="content3">Word Blocks</button>
+        </div>
+
+        <div class="tab-content active" id="content1">
+          <p>from spike import MotorPair</p>
+#For moving 10 rotation foward and backward 
+          <div>movement_motors = MotorPair ('B', 'E')</div>
+          <p>movement_motors.set_default_speed(100)</p>
+
+          <div>movement_motors.move(10, 'rotations');</div>
+          <p>movement_motors.move(-10, 'rotations');</p>
+   #Drive in a circle       
+           <div>movement_motors = MotorPair ('B', 'E')</div>
+          <p>movement_motors.set_default_speed(100)</p>
+          <div>movement_motors.move(58, cm, 70)</div>
+        </div>
+        <div class="tab-content" id="content2">
+          <img src="https://spike.legoeducation.com/content/v3/assets/blt293eea581807678a/blt5b47679c5ec31184/610b8c93a8995f47e0ee83fe/gecko_block_help_example_horizontalmove_movesetspeed_en.svg">
+      </div>
+        <div class="tab-content" id="content3"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnS_pCQAuGjRgDcFI_fdt9QtlUBaUrnuvUmg&s"></div>
+        
+        <button id="toggle-button">Switch to Light Mode</button>
+    </div>
+
+    <script>
+        const button = document.getElementById('toggle-button');
+        button.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            button.textContent = document.body.classList.contains('dark-mode') ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+        });
+
+        const buttons = document.querySelectorAll('.tab-button');
+        const contents = document.querySelectorAll('.tab-content');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                contents.forEach(content => content.classList.remove('active'));
+
+                button.classList.add('active');
+                const contentId = button.getAttribute('data-content');
+                document.getElementById(contentId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
