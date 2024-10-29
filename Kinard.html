@@ -210,20 +210,14 @@
                 button.textContent = 'Switch to Dark Mode';
             }
         });
-
-        async function sendData() {
+async function sendData() {
             const inputData = document.getElementById("input-data").value;
-            try {
-                const response = await fetch("https://script.google.com/a/macros/psdschools.org/s/AKfycbyBBnN-WLPWf69kF33pdvH4W71xCAhAfIMfjqDr7J-_dLm1M3G1QgD51bTtDaDkNmFh/exec", {
-                    method: "POST",
-                    body: new URLSearchParams({ inputData }),
-                });
-                const result = await response.text();
-                alert(result);
-            } catch (error) {
-                console.error('Error:', error);
-                alert('There was an error submitting your data.');
-            }
+            const response = await fetch("https://script.google.com/macros/s/AKfycbzYRAeRY1y3hMgm6GOHpMMiksKFRiHUsh8VqUW-FJ3A1dEUBvU5PUQ4o0L_VXMXNARw/exec", {
+                method: "POST",
+                body: new URLSearchParams({ inputData }),
+            });
+            const result = await response.text();
+            alert(result);
         }
     </script>
 </body>
