@@ -2,70 +2,174 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinard Robotics</title>
     <link rel="shortcut icon" sizes="16x16" href="data:image/webp;base64,UklGRjIDAABXRUJQVlA4ICYDAABwEgCdASogACAAPjEKjEYiEREMACADBLYATplCOBvGOHc2bMIOl/7ptDG4A/W7/VcAB+nPWAegB+1XpU/tB8Hn7T/sB8AH7B4AI0EzIesfjllAfxHyzaSP8bMsC9lNIA/qX4za8D/VemDnZ+e/9h+R30E/yb+h/5r+sfuvxnK3HII//XH2k1wEPVbqVWf5tYmvw4ECfJnt2tHNrgAA/v1kseCH+qlPqT1BipCOpVUR/gv+pkgnk36OvB18SUttMg76HFS5Okq3/V4/9aUv/lxZAz3YaXhFQUDv4rADY9WQ7Pv1/zQVfRs+f8uJCtBshGi55YkN4KVQzL717hV/xY1TnwlZvxn7YD8vNP+9QJjEYukf/m7s8xzwphLEx2R/UfCXqzv184reUMf/4E7k29IJa3/7rpoSc/xMT/LhtfS3x6S/8CdzPodI1672SUrN7f88eKzS8jU30/Z14Dan4oOYTYpi1/Ld/i6AnalJAz/z+hV341C3l8TxDlta8ia7s2RFextihwP4kgfrKKs/zf/8Lu46rI2TeA5+Sgd3JXg/5gMdyxojwy/0TBQkCn6n+//9euQPmzRHf2AP/Neev00QWFoT77xaGKPgOfl040Nk7bR8i7AR8B/pJdCSLS2sCIBVEW/s/n/8z/b/689kogMfXB0FHKQIgS/UHbbfNUNElE4b6SCYwJspQWCOI8KrZFJMpey0dgnn/7l0IDhsGIf+vmBCPXEMHeGxleeDXKErJx81/qtzksfn7D0+K5Kh1ID37o5KEFnB80zWz345OLmpDsHb7MYP/P9Z411efAy+iPVDnkyohD3zMz9Ni5fwaXNoLTujDrx1bUFb/yKyC/yVz/1Ya4BfrPfNPf/AP/8icAfBS1c4pPXP8pDf5WsBXIVou6RpK/8lR3eWMyH/1p/gK0lEEG5LbijUUc00O2ka81+wwL6t8QJCHa+6+U5Vg+ZaoRvkwBNqHEo45mR9y5cSmIj7HGmzm5k/jlKX7o/IwSHC5p73a6uQgMX6i401OrK74F2YyGI5Q5mqONJe+NLb4cfmYr6g5jVjGZCx1aGt+NceatwAAA==">
     <style>
         :root {
-            --background-color: white;
-            --text-color: black;
-            --button-color: lightblue;
+            --background-color: #f8f9fa;
+            --text-color: #343a40;
+            --button-color: #007bff;
+            --button-hover-color: #0056b3;
             --input-background: #fff;
-            --input-text-color: black;
-            --input-border-color: #ccc;
+            --input-text-color: #343a40;
+            --input-border-color: #ced4da;
+            --transition-speed: 0.3s;
         }
 
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            font-family: Verdana;
+            min-height: 100vh;
+            font-family: 'Verdana', sans-serif;
             color: var(--text-color);
-            margin: 20px;
+            margin: 0;
             background-color: var(--background-color);
-            transition: background-color 0.3s, color 0.3s;
-            position: relative;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            padding: 20px;
+            box-sizing: border-box;
+            animation: fadeIn var(--transition-speed);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         #timer {
             text-align: center;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             background-color: lightblue;
+            max-width: 90%;
+            margin: 20px;
+            transition: transform var(--transition-speed);
+        }
+
+        #countdown {
+            font-size: 2.5em;
+            margin: 20px 0;
+            animation: slideIn var(--transition-speed);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         #countdown span {
-            font-size: 2em;
-            margin: 0 10px;
+            font-weight: bold;
+            display: inline-block;
+            padding: 10px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            transition: border-color var(--transition-speed), transform var(--transition-speed);
+        }
+
+        #countdown:hover span {
+            border-color: #007bff; /* Highlight color on hover */
+            transform: scale(1.1); /* Scale up on hover */
         }
 
         a {
-            color: white;
+            color: var(--button-color);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        a:hover {
+            color: var(--button-hover-color);
+            text-decoration: underline;
         }
 
         body.dark-mode {
-            --background-color: black;
-            --text-color: white;
-            --input-background: #444;
-            --input-text-color: white;
-            --input-border-color: #666;
+            --background-color: #343a40;
+            --text-color: #f8f9fa;
+            --input-background: #495057;
+            --input-text-color: #f8f9fa;
+            --input-border-color: #6c757d;
         }
-      body.dark-mode #timer {
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwqtJQH6XrRZhFfvoMR3f6w2L6z7kNOhurQ&s'); /* Image background in dark mode */
-    background-color: transparent; /* Remove solid color in dark mode */
-}
+
+        body.dark-mode #timer {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwqtJQH6XrRZhFfvoMR3f6w2L6z7kNOhurQ&s');
+            background-color: transparent;
+        }
 
         input[type="text"] {
-            padding: 10px;
+            padding: 12px;
             border: 1px solid var(--input-border-color);
-            border-radius: 5px;
-            width: 300px;
+            border-radius: 6px;
+            width: 100%;
+            max-width: 400px;
             font-size: 16px;
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            margin: 10px 0;
+            transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed);
             background-color: var(--input-background);
             color: var(--input-text-color);
-          
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--button-color);
+            outline: none;
+        }
+
+        button {
+            padding: 12px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+            margin: 10px;
+            font-size: 16px;
+            background-color: var(--button-color);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            background-color: var(--button-hover-color);
+            transform: scale(1.05);
+        }
+
+        .hover-text {
+            transition: transform var(--transition-speed);
+            display: inline-block;
+        }
+
+        .hover-text:hover {
+            transform: translateY(-5px);
+        }
+
+        .links {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .links li {
+            margin: 10px 0;
+        }
+
+        .important-dates {
+            margin: 20px 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px;
+            }
+
+            input[type="text"] {
+                width: 90%;
+            }
+
+            #countdown span {
+                font-size: 2em;
+            }
         }
 
         button {
@@ -74,113 +178,72 @@
             border: none;
             border-radius: 5px;
             transition: opacity 0.3s ease, transform 0.3s ease;
-            position: absolute;
-            margin: 250px 250px;
-            animation: rainbow 2s linear infinite;
-        }
-
-        @keyframes rainbow {
-            0% { background-color: red; }
-            25% { background-color: orange; }
-            50% { background-color: yellow; }
-            75% { background-color: green; }
-            100% { background-color: blue; }
+            animation: rainbow-light 2s linear infinite;
         }
 
         body.dark-mode button {
-            background-color: #333;
-            color: white;
             animation: rainbow-dark 2s linear infinite;
         }
 
+        @keyframes rainbow-light {
+            0% { background-color: red; }
+            16.67% { background-color: orange; }
+            33.34% { background-color: yellow; }
+            50% { background-color: green; }
+            66.67% { background-color: blue; }
+            83.34% { background-color: indigo; }
+            100% { background-color: violet; }
+        }
+
         @keyframes rainbow-dark {
-            0% { background-color: lightblue; }
-            25% { background-color: pink; }
-            50% { background-color: lightgreen; }
-            75% { background-color: lightcoral; }
-            100% { background-color: lightblue; }
-        }
-
-        button:hover {
-            opacity: 0.8;
-            transform: scale(1.1);
-        }
-
-        .hover-text {
-            transition: transform 0.3s ease;
-            display: inline-block;
-        }
-
-        .hover-text:hover {
-            transform: translateY(-10px);
-        }
-
-        .submit-button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            transition: transform 0.3s ease;
-            position: absolute;
-            bottom: 185px;
-            left: 880px;
-        }
-
-        .submit-button:hover {
-            opacity: 0.8;
-            transform: scale(1.1);
+            0% { background-color: violet; }
+            16.67% { background-color: indigo; }
+            33.34% { background-color: blue; }
+            50% { background-color: green; }
+            66.67% { background-color: yellow; }
+            83.34% { background-color: orange; }
+            100% { background-color: red; }
         }
     </style>
 </head>
 <body class="dark-mode">
     <div id="timer">
-        <h1><large>Kinard Robotics</large></h1>
-        <h2><large>Countdown Until Qualifier</large></h2>
+        <h1>Kinard Robotics</h1>
+        <h2>Countdown Until Qualifier</h2>
         <div id="countdown">
-            <span id="days">00</span> Days
-            <span id="hours">00</span> Hours
-            <span id="minutes">00</span> Minutes
-            <span id="seconds">00</span> Seconds
+            <span class="countdown-item" id="days">00</span> Days
+            <span class="countdown-item" id="hours">00</span> Hours
+            <span class="countdown-item" id="minutes">00</span> Minutes
+            <span class="countdown-item" id="seconds">00</span> Seconds
         </div>
         <button id="toggle-button">Switch to Light Mode</button>
         <p>Created by: Ashvath D. Gupta from Kinard</p>
-        <label for="input-data">Put any things that you want me to improve here:</label>
-        <input type="text" id="input-data" placeholder="State your name then your idea!">
-        <button class="submit-button" onclick="sendData()">Submit Answers</button>
-        <div>
-            <span class="hover-text">
-                Welcome to Kinard Robotics! We are a passionate team dedicated to exploring the exciting world of LEGO robotics.
-                <div>Our mission is to inspire creativity, foster teamwork, and develop critical problem-solving skills through hands-on engineering and programming.</div>
-                <div>Whether we’re designing innovative robots for competitions or collaborating on fun projects, we aim to push the boundaries of what’s possible.</div>
-                Join us on this thrilling journey as we build, learn, and have fun together!
-                <div>links for important websites ↓</div>
-            </span>
+        <label for="input-data">Put any suggestions you have here:</label>
+        <input type="text" id="input-data" placeholder="Your name and suggestion...">
+        <button class="submit-button" onclick="sendData()">Submit</button>
+        <div class="hover-text">
+            <p>Welcome to Kinard Robotics! We are dedicated to exploring the world of LEGO robotics, inspiring creativity and fostering teamwork.</p>
+            <p>Join us on this exciting journey!</p>
         </div>
-        <ul>
-            <span class="hover-text">
-                <li><span class="hover-text"><a href="https://spike.legoeducation.com/prime/lobby/" target="_blank">Programming and building</a></span></li>
-                <li><span class="hover-text"><a href="https://www.firstinspires.org/" target="_blank">First Inspires for registration</a></span></li>
-                <li><span class="hover-text"><a href="https://classroom.google.com/c/NzExODk0ODU3NDYy" target="_blank">Google Classroom</a></span></li>
-                <li><span class="hover-text"><a href="https://firstinspires.blob.core.windows.net/fll/challenge/2024-25/fll-challenge-submerged-multimedia-resources.pdf" target="_blank">PDF resources</a></span></li>
-            </span>
-        </ul>
-        <p>Important dates!↓</p>
+        <p class="important-dates">Important Dates:</p>
         <ol>
             <li>November 9th, 2024! Pouder Qualifier</li>
             <li>More on the WAY!</li>
         </ol>
-        <span class="hover-text">
-            <img src="https://kinardenvl.weebly.com/uploads/3/1/4/7/31476893/published/kinard-logo.jpg?1612638260" height="200px">
-            <img src="https://yt3.googleusercontent.com/6RdseCI4mwWNpYRr2DDQkULL0R0D9Fe8M7rMvJMCj2vewJdi-eh1Ep3LMiN_tB4QJb3cBXExew=s900-c-k-c0x00ffffff-no-rj" height="200px">
-        </span>
+        <ul class="links">
+            <li><a href="https://spike.legoeducation.com/prime/lobby/" target="_blank">Programming and Building</a></li>
+            <li><a href="https://www.firstinspires.org/" target="_blank">First Inspires for Registration</a></li>
+            <li><a href="https://classroom.google.com/c/NzExODk0ODU3NDYy" target="_blank">Google Classroom</a></li>
+            <li><a href="https://firstinspires.blob.core.windows.net/fll/challenge/2024-25/fll-challenge-submerged-multimedia-resources.pdf" target="_blank">PDF Resources</a></li>
+        </ul>
+        <div>
+            <img src="https://kinardenvl.weebly.com/uploads/3/1/4/7/31476893/published/kinard-logo.jpg?1612638260" height="200px" alt="Kinard Robotics Logo">
+            <img src="https://yt3.googleusercontent.com/6RdseCI4mwWNpYRr2DDQkULL0R0D9Fe8M7rMvJMCj2vewJdi-eh1Ep3LMiN_tB4QJb3cBXExew=s900-c-k-c0x00ffffff-no-rj" height="200px" alt="Kinard Robotics Team Image">
+        </div>
     </div>
     <script>
-        // Set the date for the countdown
         const countdownDate = new Date("November 9, 2024 23:59:59").getTime();
 
-        // Update the countdown every 1 second
         const x = setInterval(function() {
             const now = new Date().getTime();
             const distance = countdownDate - now;
@@ -190,35 +253,61 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerHTML = days;
-            document.getElementById("hours").innerHTML = hours;
-            document.getElementById("minutes").innerHTML = minutes;
-            document.getElementById("seconds").innerHTML = seconds;
+            const daysElement = document.getElementById("days");
+            const hoursElement = document.getElementById("hours");
+            const minutesElement = document.getElementById("minutes");
+            const secondsElement = document.getElementById("seconds");
 
-            // If the countdown is finished, display some text
+            daysElement.innerHTML = days;
+            hoursElement.innerHTML = hours;
+            minutesElement.innerHTML = minutes;
+            secondsElement.innerHTML = seconds;
+
+            // Scale the numbers on update
+            daysElement.classList.add('scaled');
+            hoursElement.classList.add('scaled');
+            minutesElement.classList.add('scaled');
+            secondsElement.classList.add('scaled');
+
+            // Remove the scaling effect after a short time
+            setTimeout(() => {
+                daysElement.classList.remove('scaled');
+                hoursElement.classList.remove('scaled');
+                minutesElement.classList.remove('scaled');
+                secondsElement.classList.remove('scaled');
+            }, 300); // Adjust the timeout duration as needed
+
             if (distance < 0) {
                 clearInterval(x);
                 document.getElementById("countdown").innerHTML = "EXPIRED";
+            } else if (distance < 86400000) { // less than 1 day
+                document.getElementById("countdown").style.color = "red"; // urgent color
             }
         }, 1000);
 
         const button = document.getElementById('toggle-button');
         button.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
-            if (document.body.classList.contains('dark-mode')) {
-                button.textContent = 'Switch to Light Mode';
-            } else {
-                button.textContent = 'Switch to Dark Mode';
-            }
+            button.textContent = document.body.classList.contains('dark-mode') ? 'Switch to Light Mode' : 'Switch to Dark Mode';
         });
-async function sendData() {
-            const inputData = document.getElementById("input-data").value;
-            const response = await fetch("https://script.google.com/macros/s/AKfycbwthHqZCvJKeSgglPOVRJL6Ta1MhSu8gC5fnvRwtdlRH4p5RtB31mmICTjqO_g9q-bt/exec", {
-                method: "POST",
-                body: new URLSearchParams({ inputData }),
-            });
-            const result = await response.text();
-            alert(result);
+
+        async function sendData() {
+            const inputData = document.getElementById("input-data").value.trim();
+            if (!inputData) {
+                alert("Please enter your name and suggestion.");
+                return;
+            }
+            try {
+                const response = await fetch("https://script.google.com/macros/s/AKfycbwthHqZCvJKeSgglPOVRJL6Ta1MhSu8gC5fnvRwtdlRH4p5RtB31mmICTjqO_g9q-bt/exec", {
+                    method: "POST",
+                    body: new URLSearchParams({ inputData }),
+                });
+                const result = await response.text();
+                alert(result);
+                document.getElementById("input-data").value = ""; // clear input
+            } catch (error) {
+                alert("There was an error sending your data. Please try again.");
+            }
         }
     </script>
 </body>
